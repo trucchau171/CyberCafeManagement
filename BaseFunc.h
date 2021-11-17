@@ -18,7 +18,7 @@ static std::string BOOKING_FILE_PATH = "data_login.txt";
 
 static double CHARGE_RATE = 123;
 static const string AdminUserName = "admin";
-static const string AdminPassword = "admin";
+static const string AdminPassword = "21232f297a57a5a743894a0e4a801fc3";
 
 static const vector<string> lineMenu = {
 	"--------------MENU-------------",
@@ -93,8 +93,7 @@ static const vector<string> lineCafeManagement = {
 	"|                             |",
 	"|        1.Booking            |",
 	"|        2.Charges            |",
-	"|        3.Renewal            |",
-	"|        4.Return             |",
+	"|        3.Return             |",
 	"|                             |",
 	"|                             |",
 	"|                             |",

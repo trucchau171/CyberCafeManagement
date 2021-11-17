@@ -19,6 +19,7 @@ void login()
     {
         cout << "Enter the password: ";
         cin >> password;
+        password = md5(password);
         if (password != AdminPassword) //check the admin password login
             cout << "Wrong password. Please try again!\n";
     } while (password != AdminPassword);
@@ -111,14 +112,11 @@ void ManageMenu()
         case 2:
             charge.menu();
             break;
-        case 3:
-            //
-            break;
 
         default:
             break; //break when the choice out of Menu
         }
-    } while (c != 4);
+    } while (c != 3);
 
 }
 

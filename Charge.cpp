@@ -32,24 +32,42 @@ void Charge::takeCharge()
 		else
 		{
 			computeCharge(BOOKING_DATA.at(index));
-
-			BOOKING_DATA.erase(BOOKING_DATA.begin() + index);
-			BOOKING_DATA.shrink_to_fit();
-			std::ofstream fileOutput(BOOKING_FILE_PATH);
-			if (fileOutput.fail())
+			cout << "Do you want to take the charge? (y/n):";
+			cin >> ws;
+			string yn;
+			getline(cin, yn);
+			while (yn != "Y" && yn != "y" && yn != "N" && yn != "n")
 			{
-				std::cout << "Cannot open file at " << BOOKING_FILE_PATH << std::endl;
-				return;
+				cout << "You can type only Y/y(Yes) or N/n(No)." << endl;
+				cout << "Please type again." << endl;
+				cin >> ws;
+				getline(cin, yn);
 			}
-			else
+			if (yn == "Y" || yn == "y")
 			{
-				fileOutput.clear();
-				for (auto& element : BOOKING_DATA)
-					element.outp(element, fileOutput);
-				cout << "The fee has been taken.\n";
+				BOOKING_DATA.erase(BOOKING_DATA.begin() + index);
+				BOOKING_DATA.shrink_to_fit();
+				std::ofstream fileOutput(BOOKING_FILE_PATH);
+				if (fileOutput.fail())
+				{
+					std::cout << "Cannot open file at " << BOOKING_FILE_PATH << std::endl;
+					return;
+				}
+				else
+				{
+					fileOutput.clear();
+					for (auto& element : BOOKING_DATA)
+						element.outp(element, fileOutput);
+					cout << "The fee has been taken.\n";
+
+				}
+				fileOutput.close();
 
 			}
-			fileOutput.close();
+			else 
+			{
+				cout << "The fee has not been taken.\n";
+			}
 		}
 	}
 	else
